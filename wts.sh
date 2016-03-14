@@ -78,6 +78,9 @@ update_service(){
 
 copy_certificate_file(){
 	if [ -f "$CERTIFICATE_FILE" ]; then
+		if [ ! -f "$SERVICE_DIR/wts/resources/certificate/" ]; then
+			mkdir "$SERVICE_DIR/wts/resources/certificate/"
+		fi
 		if [ -f "$SHARED_CERTIFICATE_FILE" ]; then
 			mv "$SHARED_CERTIFICATE_FILE" "$SHARED_CERTIFICATE_FILE.bak"
 			if [ $? -ne 0 ]; then
